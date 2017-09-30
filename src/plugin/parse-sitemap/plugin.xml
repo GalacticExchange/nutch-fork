@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<plugin id="parse-sitemap"
+        name="Parse sitemap and get urls"
+        version="1.0.0"
+        provider-name="nutch.org">
+
+    <runtime>
+        <library name="parse-sitemap.jar">
+            <export name="*"/>
+        </library>
+    </runtime>
+
+
+    <requires>
+        <import plugin="nutch-extensionpoints"/>
+    </requires>
+
+    <extension id="org.apache.nutch.parse.sitemap"
+               name="SitemapParse"
+               point="org.apache.nutch.parse.Parser">
+
+        <implementation id="org.apache.nutch.parse.sitemap.SitemapParser"
+                        class="org.apache.nutch.parse.sitemap.SitemapParser">
+            <parameter name="contentType" value="text/xml|application/xml"/>
+            <parameter name="pathSuffix" value=""/>
+        </implementation>
+    </extension>
+</plugin>
+
